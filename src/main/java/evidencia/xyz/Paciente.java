@@ -1,4 +1,5 @@
 package evidencia.xyz;
 
-public class Paciente {
+public class Paciente extends Persona{
+    int idPaciente;
 }

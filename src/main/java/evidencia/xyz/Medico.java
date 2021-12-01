@@ -1,4 +1,6 @@
 package evidencia.xyz;
 
-public class Medico {
+public class Medico extends Persona{
+    int idMedico, NoCedula;
+    String especialidad;
 }
