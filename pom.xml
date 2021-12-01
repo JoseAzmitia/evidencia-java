@@ -6,7 +6,7 @@
 
     <name>Evidencia Java</name>
     <description>Aplicación citas medicas</description>
-    
+
     <groupId>net.codejava</groupId>
     <artifactId>evidencia-java</artifactId>
     <version>1.0-SNAPSHOT</version>
