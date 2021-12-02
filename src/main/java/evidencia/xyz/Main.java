@@ -7,8 +7,8 @@ import java.util.List;
 public class Main {
 
     public static List<Usuario> usuarios;
-    public static List<Usuario> pacientes;
-    public static List<Usuario> medicos;
+    public static List<Paciente> pacientes = new ArrayList<>();
+    public static List<Medico> medicos = new ArrayList<>();
 
     public static void main(String[] args) {
         cargarUsuarios();
@@ -51,8 +51,11 @@ public class Main {
             }
             switch (option) {
                 case 1 -> {
-                    Cita cita = new Cita();
-
+                    int idCita = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
+                    int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+                    String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha"));
+                    Cita cita = new Cita(idCita,fechaCita, pacientes.get(0), medicos.get(0));
+                    System.out.println(cita);
                 }
                 case 2 -> {
                     System.out.println("alta paciente");
@@ -64,6 +67,7 @@ public class Main {
                     String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
                     char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
                     Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
+                    pacientes.add(paciente);
                     System.out.println(paciente);
                 }
                 case 3 -> {
@@ -77,6 +81,7 @@ public class Main {
                     String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
                     char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
                     Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
+                    medicos.add(medico);
                     System.out.println(medico);
                 }
                 case 4 -> {

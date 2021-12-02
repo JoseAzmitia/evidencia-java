@@ -1,15 +1,19 @@
 package evidencia.xyz;
 
 public class Medicamento {
-    private int idMedicamento;
-    private String descripcion;
+    private String nombre, descripcion;
 
-    public int getIdMedicamento() {
-        return idMedicamento;
+    public Medicamento(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    public void setIdMedicamento(int idMedicamento) {
-        this.idMedicamento = idMedicamento;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -18,5 +22,13 @@ public class Medicamento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Medicamento{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                '}';
     }
 }
