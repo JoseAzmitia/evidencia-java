@@ -1,13 +1,13 @@
 package evidencia.xyz;
 
 public class Medico{
-    private int idMedico, NoCedula, edad;
+    private int idMedico, noCedula, edad;
     private String especialidad, nombre, apPaterno,apMaterno;
     private char sexo;
 
     public Medico(int idMedico, int noCedula, int edad, String especialidad, String nombre, String apPaterno, String apMaterno, char sexo) {
         this.idMedico = idMedico;
-        this.NoCedula = noCedula;
+        this.noCedula = noCedula;
         this.edad = edad;
         this.especialidad = especialidad;
         this.nombre = nombre;
@@ -25,11 +25,11 @@ public class Medico{
     }
 
     public int getNoCedula() {
-        return NoCedula;
+        return noCedula;
     }
 
     public void setNoCedula(int noCedula) {
-        NoCedula = noCedula;
+        this.noCedula = noCedula;
     }
 
     public int getEdad() {
@@ -84,7 +84,7 @@ public class Medico{
     public String toString() {
         return "Medico{" +
                 "idMedico=" + idMedico +
-                ", NoCedula=" + NoCedula +
+                ", noCedula=" + noCedula +
                 ", edad=" + edad +
                 ", especialidad='" + especialidad + '\'' +
                 ", nombre='" + nombre + '\'' +

@@ -68,7 +68,16 @@ public class Main {
                 }
                 case 3 -> {
                     System.out.println("alta medico");
-
+                    int idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
+                    int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
+                    int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+                    String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
+                    String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+                    String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+                    String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+                    char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+                    Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
+                    System.out.println(medico);
                 }
                 case 4 -> {
                     System.out.println("lista de citas");
