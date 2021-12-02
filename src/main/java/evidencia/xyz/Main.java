@@ -7,6 +7,8 @@ import java.util.List;
 public class Main {
 
     public static List<Usuario> usuarios;
+    public static List<Usuario> pacientes;
+    public static List<Usuario> medicos;
 
     public static void main(String[] args) {
         cargarUsuarios();
@@ -39,7 +41,7 @@ public class Main {
                         Aplicación citas medicas
                         Selecciona una opción
                         1. Crear una cita
-                        2. Dar de alta un pacienta
+                        2. Dar de alta un paciente
                         3. Dar de alta un medico
                         4. Ver la lista de citas
                         0. Salir"""));
@@ -48,8 +50,29 @@ public class Main {
                 menu();
             }
             switch (option) {
-                case 1 -> System.out.println("prueba");
-                case 2 -> System.out.println("hola");
+                case 1 -> {
+                    Cita cita = new Cita();
+
+                }
+                case 2 -> {
+                    System.out.println("alta paciente");
+                    int idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
+                    int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+                    int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+                    String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+                    String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+                    String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+                    char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+                    Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
+                    System.out.println(paciente);
+                }
+                case 3 -> {
+                    System.out.println("alta medico");
+
+                }
+                case 4 -> {
+                    System.out.println("lista de citas");
+                }
                 case 0 -> option = 0;
                 default -> JOptionPane.showMessageDialog(null, "Opción inválida");
             }
