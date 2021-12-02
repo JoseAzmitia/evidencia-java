@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6c08d9d9-8845-440b-975f-85dc2d391474" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Cita.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Cita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Receta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Receta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Usuario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +45,26 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="evidencia.xyz.Main" />
+      <module name="evidencia-java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="evidencia.xyz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -50,7 +75,8 @@
       <updated>1632778469726</updated>
       <workItem from="1632778471136" duration="9000" />
       <workItem from="1633328974660" duration="38000" />
-      <workItem from="1638385520998" duration="3059000" />
+      <workItem from="1638385520998" duration="4056000" />
+      <workItem from="1638406194250" duration="3128000" />
     </task>
     <servers />
   </component>

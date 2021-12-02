@@ -1,9 +1,9 @@
 package evidencia.xyz;
 
 public class Receta {
-    int idReceta;
-    String descripcion;
-    Medicamento medicina;
+    private int idReceta;
+    private String descripcion;
+    private Medicamento medicina;
 
     public Receta(int idReceta, String descripcion, Medicamento medicina) {
         this.idReceta = idReceta;

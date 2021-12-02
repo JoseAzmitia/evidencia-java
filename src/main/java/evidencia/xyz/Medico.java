@@ -1,8 +1,8 @@
 package evidencia.xyz;
 
 public class Medico extends Persona{
-    int idMedico, NoCedula;
-    String especialidad;
+    private int idMedico, NoCedula;
+    private String especialidad;
 
     public int getIdMedico() {
         return idMedico;

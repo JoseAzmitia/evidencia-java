@@ -1,7 +1,7 @@
 package evidencia.xyz;
 
 public class Paciente extends Persona{
-    int idPaciente;
+    private int idPaciente;
 
     public int getIdPaciente() {
         return idPaciente;

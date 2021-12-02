@@ -1,9 +1,10 @@
 package evidencia.xyz;
 
 public class Cita {
-    int idCita, fechaCita;
-    Paciente paciente;
-    Medico medico;
+    private int idCita, fechaCita;
+    private Paciente paciente;
+    private Medico medico;
+    private Receta receta;
 
     public int getIdCita() {
         return idCita;
@@ -35,5 +36,13 @@ public class Cita {
 
     public void setMedico(Medico medico) {
         this.medico = medico;
+    }
+
+    public Receta getReceta() {
+        return receta;
+    }
+
+    public void setReceta(Receta receta) {
+        this.receta = receta;
     }
 }

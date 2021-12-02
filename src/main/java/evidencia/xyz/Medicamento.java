@@ -1,8 +1,8 @@
 package evidencia.xyz;
 
 public class Medicamento {
-    int idMedicamento;
-    String descripcion;
+    private int idMedicamento;
+    private String descripcion;
 
     public int getIdMedicamento() {
         return idMedicamento;

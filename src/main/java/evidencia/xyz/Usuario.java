@@ -1,8 +1,14 @@
 package evidencia.xyz;
 
 public class Usuario {
-    int idUsuario;
-    String nombre, contraseña;
+    private int idUsuario;
+    private String nombre, contrasena;
+
+    public Usuario(int idUsuario, String nombre, String contrasena) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -20,11 +26,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }
