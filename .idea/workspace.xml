@@ -6,10 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6c08d9d9-8845-440b-975f-85dc2d391474" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evidencia-java.iml" beforeDir="false" afterPath="$PROJECT_DIR$/evidencia-java.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Cita.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Cita.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Paciente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Paciente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Cita.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Cita.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Paciente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Paciente.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,8 @@
       <workItem from="1633328974660" duration="38000" />
       <workItem from="1638385520998" duration="4056000" />
       <workItem from="1638406194250" duration="5647000" />
-      <workItem from="1638426986142" duration="3097000" />
+      <workItem from="1638426986142" duration="3186000" />
+      <workItem from="1638517027228" duration="1941000" />
     </task>
     <servers />
   </component>
@@ -91,5 +96,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

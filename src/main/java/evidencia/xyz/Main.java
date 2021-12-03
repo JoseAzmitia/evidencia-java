@@ -1,14 +1,19 @@
 package evidencia.xyz;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Main {
 
     public static List<Usuario> usuarios;
     public static List<Paciente> pacientes = new ArrayList<>();
     public static List<Medico> medicos = new ArrayList<>();
+    public static List<Cita> citas = new ArrayList<>();
 
     public static void main(String[] args) {
         cargarUsuarios();
@@ -51,15 +56,17 @@ public class Main {
             }
             switch (option) {
                 case 1 -> {
-                    int idCita = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
-                    int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+                    /*int idCita = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));*/
+                    int idCita = citas.size() + 1;
                     String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha"));
                     Cita cita = new Cita(idCita,fechaCita, pacientes.get(0), medicos.get(0));
                     System.out.println(cita);
+                    save(cita);
                 }
                 case 2 -> {
                     System.out.println("alta paciente");
-                    int idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
+                    /*int idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));*/
+                    int idPaciente = pacientes.size() + 1;
                     int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
                     int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
                     String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
@@ -72,7 +79,8 @@ public class Main {
                 }
                 case 3 -> {
                     System.out.println("alta medico");
-                    int idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));
+                    /*int idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id"));*/
+                    int idMedico = medicos.size() + 1;
                     int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
                     int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
                     String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
@@ -86,6 +94,11 @@ public class Main {
                 }
                 case 4 -> {
                     System.out.println("lista de citas");
+                    ListIterator it = citas.listIterator();
+                    System.out.println("Lista de citas:");
+                    while(it.hasNext()){
+                        System.out.println(it.next());
+                    }
                 }
                 case 0 -> option = 0;
                 default -> JOptionPane.showMessageDialog(null, "Opción inválida");
@@ -106,5 +119,26 @@ public class Main {
 
     public static boolean validarCredenciales(String usuario, String contrasena){
         return usuarios.stream().anyMatch(x -> x.getNombre().equals(usuario) && x.getContrasena().equals(contrasena));
+    }
+
+    public static void save(Cita cita) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(cita);
+            System.out.println(json);
+        } catch (Exception e) {
+            System.out.println("Error->" + e.getMessage());
+        }
+
+        /*Guardar variable*/
+    }
+
+    public static void load() {
+        String json = "{\"idCita\":1,\"fechaCita\":\"17-02-21\",\"paciente\":{\"idPaciente\":1,\"telefono\":9933,\"edad\":3,\"nombre\":\"Edison\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"},\"medico\":{\"idMedico\":1,\"noCedula\":938,\"edad\":34,\"especialidad\":\"general\",\"nombre\":\"Newton\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"}}";
+        System.out.println("load " + json);
+        Gson gson = new Gson();
+        Cita cita = gson.fromJson(json, Cita.class);
+
+        System.out.println("nombre del paciente: " + cita.getPaciente().getNombre());
     }
 }
