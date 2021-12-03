@@ -4,9 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 import javax.swing.*;
+import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -17,6 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
         cargarUsuarios();
+        load();
         login();
     }
 
@@ -94,10 +99,8 @@ public class Main {
                 }
                 case 4 -> {
                     System.out.println("lista de citas");
-                    ListIterator it = citas.listIterator();
-                    System.out.println("Lista de citas:");
-                    while(it.hasNext()){
-                        System.out.println(it.next());
+                    for (int i = 0; i < citas.size(); i++) {
+                        System.out.println(citas.get(i));
                     }
                 }
                 case 0 -> option = 0;
@@ -122,10 +125,22 @@ public class Main {
     }
 
     public static void save(Cita cita) {
+        String rutaCita = "json\\citas.json";
         try {
             ObjectMapper mapper = new ObjectMapper();
             String json = mapper.writeValueAsString(cita);
             System.out.println(json);
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(rutaCita));
+                writer.write(json);
+                FileWriter fileWriter = new FileWriter(rutaCita);
+                PrintWriter printWriter = new PrintWriter(fileWriter);
+                printWriter.print(json);
+                printWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         } catch (Exception e) {
             System.out.println("Error->" + e.getMessage());
         }
@@ -134,7 +149,21 @@ public class Main {
     }
 
     public static void load() {
-        String json = "{\"idCita\":1,\"fechaCita\":\"17-02-21\",\"paciente\":{\"idPaciente\":1,\"telefono\":9933,\"edad\":3,\"nombre\":\"Edison\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"},\"medico\":{\"idMedico\":1,\"noCedula\":938,\"edad\":34,\"especialidad\":\"general\",\"nombre\":\"Newton\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"}}";
+        /*String json = "{\"idCita\":1,\"fechaCita\":\"17-02-21\",\"paciente\":{\"idPaciente\":1,\"telefono\":9933,\"edad\":3,\"nombre\":\"Edison\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"},\"medico\":{\"idMedico\":1,\"noCedula\":938,\"edad\":34,\"especialidad\":\"general\",\"nombre\":\"Newton\",\"apPaterno\":\"prz\",\"apMaterno\":\"azm\",\"sexo\":\"M\"}}";*/
+        String json = "";
+        String rutaCita = "json\\citas.json";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaCita))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                json += linea;
+            }
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
         System.out.println("load " + json);
         Gson gson = new Gson();
         Cita cita = gson.fromJson(json, Cita.class);
