@@ -34,4 +34,13 @@ public class Receta {
     public void setMedicina(Medicamento medicina) {
         this.medicina = medicina;
     }
+
+    @Override
+    public String toString() {
+        return "Receta{" +
+                "idReceta=" + idReceta +
+                ", descripcion='" + descripcion + '\'' +
+                ", medicina=" + medicina +
+                '}';
+    }
 }

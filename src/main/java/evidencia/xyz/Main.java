@@ -3,7 +3,6 @@ package evidencia.xyz;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.Type;
@@ -19,6 +18,7 @@ public class Main {
     public static List<Paciente> pacientes = new ArrayList<>();
     public static List<Medico> medicos = new ArrayList<>();
     public static List<Cita> citas = new ArrayList<>();
+    public static List<Receta> recetas = new ArrayList<>();
 
     public static void main(String[] args) {
         cargarUsuarios();
@@ -55,7 +55,7 @@ public class Main {
                         1. Crear una cita
                         2. Dar de alta un paciente
                         3. Dar de alta un medico
-                        4. Ver la lista de citas
+                        4. Crear receta
                         0. Salir"""));
             }catch (Throwable e){
                 JOptionPane.showMessageDialog(null, "Opción inválida");
@@ -72,7 +72,7 @@ public class Main {
                     menuMedicos();
                 }
                 case 4 -> {
-                   listaCitas();
+                   generarReceta();
                 }
                 case 0 -> option = 0;
                 default -> JOptionPane.showMessageDialog(null, "Opción inválida");
@@ -383,7 +383,7 @@ public class Main {
         System.out.println("alta paciente");
         try{
             int idPaciente = pacientes.size() + 1;
-            int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+            int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el teléfono"));
             int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
             String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
             String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
@@ -394,7 +394,7 @@ public class Main {
             pacientes.add(paciente);
             savePacientes(pacientes);
         }catch (Exception e){
-            System.out.println("Ocurrió un error, intenta de nuevo");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error, intenta de nuevo");
             menuPacientes();
         }
     }
@@ -426,7 +426,7 @@ public class Main {
             medicos.add(medico);
             saveMedicos(medicos);
         }catch (Exception e){
-            System.out.println("Ocurrió un error, intenta de nuevo");
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error, intenta de nuevo");
             menuMedicos();
         }
     }
@@ -439,6 +439,22 @@ public class Main {
             for (Medico medico : medicos){
                 System.out.println("id: " + medico.getIdMedico() + " nombre: " + medico.getNombre());
             }
+        }
+    }
+
+    public static void generarReceta(){
+        System.out.println("Crear receta");
+        try{
+            int idReceta = recetas.size() + 1;
+            String descripcion = (JOptionPane.showInputDialog("Escribe la descripción de la receta"));
+            String nombreMed = (JOptionPane.showInputDialog("Escribe el nombre del medicamento"));
+            Medicamento medicina = new Medicamento(nombreMed);
+            Receta receta = new Receta(idReceta, descripcion, medicina);
+            System.out.println(receta);
+            recetas.add(receta);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error, intenta de nuevo");
+            menu();
         }
     }
 
