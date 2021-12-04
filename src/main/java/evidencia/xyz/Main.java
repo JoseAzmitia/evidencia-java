@@ -331,35 +331,40 @@ public class Main {
         int idPaciente, idMedico;
         Boolean disponible = false;
         Boolean formato = false;
-        do{
-            String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha - Formato dd/MM/yyyy"));
-            if (isValidDate(fechaCita) == true){
-                if (citas.contains(fechaCita)){
-                    System.out.println("Fecha ocupada, intenta otra fecha");
-                    disponible = false;
+        try{
+            do{
+                String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha - Formato dd/MM/yyyy"));
+                if (isValidDate(fechaCita) == true){
+                    if (fechaOcupada(fechaCita) == true){
+                        System.out.println("Fecha ocupada, intenta otra fecha");
+                        disponible = false;
+                    }else{
+                        disponible = true;
+                        listaPacientes();
+                        listaMedico();
+                        idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Paciente"));
+                        if (idPaciente > pacientes.size()){
+                            System.out.println("El paciente que eligió no existe, redireccionando al menú de Pacientes..");
+                            menuPacientes();
+                        }
+                        idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Medico"));
+                        if (idPaciente > medicos.size()){
+                            System.out.println("El medico que eligió no existe, redireccionando al menú de Medicos..");
+                            menuMedicos();
+                        }
+                        Cita cita = new Cita(idCita,fechaCita, pacientes.get(idPaciente-1), medicos.get(idMedico-1));
+                        System.out.println(cita);
+                        citas.add(cita);
+                        saveCitas(citas);
+                    }
                 }else{
-                    disponible = true;
-                    listaPacientes();
-                    listaMedico();
-                    idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Paciente"));
-                    if (idPaciente > pacientes.size()){
-                        System.out.println("El paciente que eligió no existe, redireccionando al menú de Pacientes..");
-                        menuPacientes();
-                    }
-                    idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Medico"));
-                    if (idPaciente > medicos.size()){
-                        System.out.println("El medico que eligió no existe, redireccionando al menú de Medicos..");
-                        menuMedicos();
-                    }
-                    Cita cita = new Cita(idCita,fechaCita, pacientes.get(idPaciente-1), medicos.get(idMedico-1));
-                    System.out.println(cita);
-                    citas.add(cita);
-                    saveCitas(citas);
+                    JOptionPane.showMessageDialog(null, "Formato inválido, intentalo de nuevo");
                 }
-            }else{
-                System.out.println("Formato inválido, intentalo de nuevo");
-            }
-        }while ((disponible & formato) != false);
+            }while ((disponible & formato) != false);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error, intenta de nuevo");
+            crearCita();
+        }
     }
 
     public static void listaCitas(){
@@ -376,17 +381,22 @@ public class Main {
 
     public static void altaPaciente(){
         System.out.println("alta paciente");
-        int idPaciente = pacientes.size() + 1;
-        int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
-        String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
-        String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
-        String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
-        char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
-        Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
-        System.out.println(paciente);
-        pacientes.add(paciente);
-        savePacientes(pacientes);
+        try{
+            int idPaciente = pacientes.size() + 1;
+            int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+            int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+            String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+            String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+            String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+            char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+            Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
+            System.out.println(paciente);
+            pacientes.add(paciente);
+            savePacientes(pacientes);
+        }catch (Exception e){
+            System.out.println("Ocurrió un error, intenta de nuevo");
+            menuPacientes();
+        }
     }
 
     public static void listaPacientes(){
@@ -402,18 +412,23 @@ public class Main {
 
     public static void altaMedico(){
         System.out.println("alta medico");
-        int idMedico = medicos.size() + 1;
-        int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
-        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
-        String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
-        String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
-        String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
-        String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
-        char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
-        Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
-        System.out.println(medico);
-        medicos.add(medico);
-        saveMedicos(medicos);
+        try {
+            int idMedico = medicos.size() + 1;
+            int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
+            int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+            String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
+            String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+            String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+            String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+            char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+            Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
+            System.out.println(medico);
+            medicos.add(medico);
+            saveMedicos(medicos);
+        }catch (Exception e){
+            System.out.println("Ocurrió un error, intenta de nuevo");
+            menuMedicos();
+        }
     }
 
     public static void listaMedico(){
@@ -428,7 +443,7 @@ public class Main {
     }
 
     public static boolean isValidDate(String inDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:ms");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateFormat.setLenient(false);
         try {
             dateFormat.parse(inDate.trim());
@@ -436,5 +451,18 @@ public class Main {
             return false;
         }
         return true;
+    }
+
+    public static boolean fechaOcupada(String fecha){
+        Boolean existe = false;
+        for (Cita cita : citas){
+            if (fecha.equals(cita.getFechaCita()) == true){
+                existe = true;
+                break;
+            }else{
+                existe = false;
+            }
+        }
+        return existe;
     }
 }

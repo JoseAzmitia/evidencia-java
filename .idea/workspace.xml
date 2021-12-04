@@ -7,6 +7,7 @@
     <list default="true" id="6c08d9d9-8845-440b-975f-85dc2d391474" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,7 @@
       <workItem from="1638406194250" duration="5647000" />
       <workItem from="1638426986142" duration="3186000" />
       <workItem from="1638517027228" duration="2022000" />
-      <workItem from="1638559464310" duration="20800000" />
+      <workItem from="1638559464310" duration="24980000" />
     </task>
     <servers />
   </component>
@@ -91,5 +92,12 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="citas.get(0).fechaCita" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
