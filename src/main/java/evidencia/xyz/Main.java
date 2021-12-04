@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken;
 import javax.swing.*;
 import java.io.*;
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -326,11 +328,38 @@ public class Main {
 
     public static void crearCita(){
         int idCita = citas.size() + 1;
-        String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha"));
-        Cita cita = new Cita(idCita,fechaCita, pacientes.get(0), medicos.get(0));
-        System.out.println(cita);
-        citas.add(cita);
-        saveCitas(citas);
+        int idPaciente, idMedico;
+        Boolean disponible = false;
+        Boolean formato = false;
+        do{
+            String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha - Formato dd/MM/yyyy"));
+            if (isValidDate(fechaCita) == true){
+                if (citas.contains(fechaCita)){
+                    System.out.println("Fecha ocupada, intenta otra fecha");
+                    disponible = false;
+                }else{
+                    disponible = true;
+                    listaPacientes();
+                    listaMedico();
+                    idPaciente = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Paciente"));
+                    if (idPaciente > pacientes.size()){
+                        System.out.println("El paciente que eligió no existe, redireccionando al menú de Pacientes..");
+                        menuPacientes();
+                    }
+                    idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Medico"));
+                    if (idPaciente > medicos.size()){
+                        System.out.println("El medico que eligió no existe, redireccionando al menú de Medicos..");
+                        menuMedicos();
+                    }
+                    Cita cita = new Cita(idCita,fechaCita, pacientes.get(idPaciente-1), medicos.get(idMedico-1));
+                    System.out.println(cita);
+                    citas.add(cita);
+                    saveCitas(citas);
+                }
+            }else{
+                System.out.println("Formato inválido, intentalo de nuevo");
+            }
+        }while ((disponible & formato) != false);
     }
 
     public static void listaCitas(){
@@ -396,5 +425,16 @@ public class Main {
                 System.out.println("id: " + medico.getIdMedico() + " nombre: " + medico.getNombre());
             }
         }
+    }
+
+    public static boolean isValidDate(String inDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:ms");
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(inDate.trim());
+        } catch (ParseException pe) {
+            return false;
+        }
+        return true;
     }
 }
