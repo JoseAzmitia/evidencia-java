@@ -61,48 +61,100 @@ public class Main {
             }
             switch (option) {
                 case 1 -> {
-                    int idCita = citas.size() + 1;
-                    String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha"));
-                    Cita cita = new Cita(idCita,fechaCita, pacientes.get(0), medicos.get(0));
-                    System.out.println(cita);
-                    citas.add(cita);
-                    saveCitas(citas);
+                   menuCitas();
                 }
                 case 2 -> {
-                    System.out.println("alta paciente");
-                    int idPaciente = pacientes.size() + 1;
-                    int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
-                    int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
-                    String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
-                    String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
-                    String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
-                    char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
-                    Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
-                    System.out.println(paciente);
-                    pacientes.add(paciente);
-                    savePacientes(pacientes);
+                    menuPacientes();
                 }
                 case 3 -> {
-                    System.out.println("alta medico");
-                    int idMedico = medicos.size() + 1;
-                    int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
-                    int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
-                    String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
-                    String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
-                    String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
-                    String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
-                    char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
-                    Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
-                    System.out.println(medico);
-                    medicos.add(medico);
-                    saveMedicos(medicos);
+                    menuMedicos();
                 }
                 case 4 -> {
-                    System.out.println("lista de citas");
-                    for (int i = 0; i < citas.size(); i++) {
-                        Cita x = citas.get(i);
-                        System.out.println(x.toString());
-                    }
+                   listaCitas();
+                }
+                case 0 -> option = 0;
+                default -> JOptionPane.showMessageDialog(null, "Opción inválida");
+            }
+        }while (option != 0);
+    }
+
+    public static void menuCitas(){
+        System.out.println("Mostrando menú citas");
+        byte option = 0;
+        do{
+            try {
+                option = Byte.parseByte(JOptionPane.showInputDialog("""
+                        Aplicación citas medicas
+                        Selecciona una opción
+                        1. Crear una cita
+                        2. Ver la lista de citas
+                        0. Salir"""));
+            }catch (Throwable e){
+                JOptionPane.showMessageDialog(null, "Opción inválida");
+                menuCitas();
+            }
+            switch (option) {
+                case 1 -> {
+                    crearCita();
+                }
+                case 2 -> {
+                    listaCitas();
+                }
+                case 0 -> option = 0;
+                default -> JOptionPane.showMessageDialog(null, "Opción inválida");
+            }
+        }while (option != 0);
+    }
+
+    public static void menuPacientes(){
+        System.out.println("Mostrando menú alta Pacientes");
+        byte option = 0;
+        do{
+            try {
+                option = Byte.parseByte(JOptionPane.showInputDialog("""
+                        Aplicación citas medicas
+                        Selecciona una opción
+                        1. Dar de alta un paciente
+                        2. Ver la lista de pacientes
+                        0. Salir"""));
+            }catch (Throwable e){
+                JOptionPane.showMessageDialog(null, "Opción inválida");
+                menuPacientes();
+            }
+            switch (option) {
+                case 1 -> {
+                    altaPaciente();
+                }
+                case 2 -> {
+                    listaPacientes();
+                }
+                case 0 -> option = 0;
+                default -> JOptionPane.showMessageDialog(null, "Opción inválida");
+            }
+        }while (option != 0);
+    }
+
+    public static void menuMedicos(){
+        System.out.println("Mostrando menú alta medicos");
+        byte option = 0;
+        do{
+            try {
+                option = Byte.parseByte(JOptionPane.showInputDialog("""
+                        Aplicación citas medicas
+                        Selecciona una opción
+                        1. Dar de alta un medico
+                        2. Ver la lista de medicos
+                        0. Salir"""));
+            }catch (Throwable e){
+                JOptionPane.showMessageDialog(null, "Opción inválida");
+                menuMedicos();
+            }
+            switch (option) {
+                case 1 -> {
+                    altaMedico();
+                }
+                case 2 -> {
+                    listaMedico();
                 }
                 case 0 -> option = 0;
                 default -> JOptionPane.showMessageDialog(null, "Opción inválida");
@@ -271,19 +323,78 @@ public class Main {
             }
         }
     }
-}
 
-            /*System.out.println("load " + json);
-            Gson gson = new Gson();
-            Cita cita = gson.fromJson(json, Cita.class);
-            citas.add(cita);
-            Paciente paciente = new Paciente(cita.getPaciente().getIdPaciente(), cita.getPaciente().getTelefono(),
-                    cita.getPaciente().getEdad(), cita.getPaciente().getNombre(), cita.getPaciente().getApPaterno(),
-                    cita.getPaciente().getApMaterno(), cita.getPaciente().getSexo());
-            pacientes.add(paciente);
-            Medico medico = new Medico(cita.getMedico().getIdMedico(), cita.getMedico().getNoCedula(),
-                    cita.getMedico().getEdad(), cita.getMedico().getEspecialidad(), cita.getMedico().getNombre(),
-                    cita.getMedico().getApPaterno(), cita.getMedico().getApPaterno(), cita.getMedico().getSexo());
-            medicos.add(medico);
-            System.out.println("nombre del paciente: " + cita.getPaciente().getNombre());
-             */
+    public static void crearCita(){
+        int idCita = citas.size() + 1;
+        String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha"));
+        Cita cita = new Cita(idCita,fechaCita, pacientes.get(0), medicos.get(0));
+        System.out.println(cita);
+        citas.add(cita);
+        saveCitas(citas);
+    }
+
+    public static void listaCitas(){
+        if (citas.isEmpty()){
+            System.out.println("No hay citas en la lista");
+        }else{
+            System.out.println("lista de citas");
+            for (Cita cita : citas) {
+                System.out.println("id: " + cita.getIdCita() + " paciente: " + cita.getPaciente().getNombre()
+                        + " medico: " + cita.getMedico().getNombre() + " fecha: " + cita.getFechaCita());
+            }
+        }
+    }
+
+    public static void altaPaciente(){
+        System.out.println("alta paciente");
+        int idPaciente = pacientes.size() + 1;
+        int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el telefono"));
+        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+        String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+        String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+        String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+        char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+        Paciente paciente = new Paciente(idPaciente,telefono,edad,nombre,apPaterno,apMaterno,sexo);
+        System.out.println(paciente);
+        pacientes.add(paciente);
+        savePacientes(pacientes);
+    }
+
+    public static void listaPacientes(){
+        if (medicos.isEmpty()){
+            System.out.println("No hay pacientes en la lista");
+        }else{
+            System.out.println("Lista de pacientes registrados");
+            for (Paciente paciente : pacientes){
+                System.out.println("id: " + paciente.getIdPaciente() + " nombre: " + paciente.getNombre());
+            }
+        }
+    }
+
+    public static void altaMedico(){
+        System.out.println("alta medico");
+        int idMedico = medicos.size() + 1;
+        int noCedula = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el Número de cédula"));
+        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingresa la edad"));
+        String especialidad = (JOptionPane.showInputDialog("Ingresa la especialidad"));
+        String nombre = (JOptionPane.showInputDialog("Ingresa el nombre"));
+        String apPaterno = (JOptionPane.showInputDialog("Ingresa el apellido paterno"));
+        String apMaterno = (JOptionPane.showInputDialog("Ingresa el apellido materno"));
+        char sexo = (JOptionPane.showInputDialog("Ingresa el sexo (M / F)")).charAt(0);
+        Medico medico = new Medico(idMedico,noCedula,edad,especialidad,nombre,apPaterno,apMaterno,sexo);
+        System.out.println(medico);
+        medicos.add(medico);
+        saveMedicos(medicos);
+    }
+
+    public static void listaMedico(){
+        if (medicos.isEmpty()){
+            System.out.println("No hay medicos en la lista");
+        }else{
+            System.out.println("Lista de medicos registrados");
+            for (Medico medico : medicos){
+                System.out.println("id: " + medico.getIdMedico() + " nombre: " + medico.getNombre());
+            }
+        }
+    }
+}
