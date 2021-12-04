@@ -333,7 +333,7 @@ public class Main {
         Boolean formato = false;
         try{
             do{
-                String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha - Formato dd/MM/yyyy"));
+                String fechaCita = (JOptionPane.showInputDialog("Ingresa la fecha - Formato dd-MM-yyyy"));
                 if (isValidDate(fechaCita) == true){
                     if (fechaOcupada(fechaCita) == true){
                         System.out.println("Fecha ocupada, intenta otra fecha");
@@ -348,7 +348,7 @@ public class Main {
                             menuPacientes();
                         }
                         idMedico = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el id del Medico"));
-                        if (idPaciente > medicos.size()){
+                        if (idMedico > medicos.size()){
                             System.out.println("El medico que eligió no existe, redireccionando al menú de Medicos..");
                             menuMedicos();
                         }
