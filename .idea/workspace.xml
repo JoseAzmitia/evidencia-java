@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="evidencia-java:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c08d9d9-8845-440b-975f-85dc2d391474" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Medicamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Receta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/evidencia/xyz/Receta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/evidencia/xyz/Receta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/evidencia/xyz/Receta.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +41,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.43472221" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="build.tools" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -76,7 +80,7 @@
       <workItem from="1638406194250" duration="5647000" />
       <workItem from="1638426986142" duration="3186000" />
       <workItem from="1638517027228" duration="2022000" />
-      <workItem from="1638559464310" duration="26171000" />
+      <workItem from="1638559464310" duration="29977000" />
     </task>
     <servers />
   </component>
