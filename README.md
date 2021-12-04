@@ -44,16 +44,16 @@ El programa es capaz de manejar las excepciones correctamente, en caso de ocurri
 Se recomienda respetar los formatos de entrada para evitar incovenientes.
 
 Formatos de entrada
-Fecha: dd/MM/yyyy
-Nombre: Cadena de carácteres - ejemplo: José
-apPaterno: Perez
-apMaterno: Azmitia
-Sexo: Carácter único - ejemplo: M
-Cedula: valores enteros -ejemplo 97238
-Telefono: valores enteros - ejemplo 839724
-id: valores enteros - ejemplo 4
-Edad: valores enteros - ejemplo: 20
-Decripción: Cadena de carácteres - ejemplo: 1 Dosis cada 6 horas durante 2 semanas
+Fecha: dd/MM/yyyy.
+Nombre: Cadena de carácteres - ejemplo: José.
+apPaterno: Perez.
+apMaterno: Azmitia.
+Sexo: Carácter único - ejemplo: M.
+Cedula: valores enteros -ejemplo 97238.
+Telefono: valores enteros - ejemplo 839724.
+id: valores enteros - ejemplo 4.
+Edad: valores enteros - ejemplo: 20.
+Decripción: Cadena de carácteres - ejemplo: 1 Dosis cada 6 horas durante 2 semanas.
 
 # Créditos.
 José Carlos Perez Azmitia
